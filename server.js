@@ -1,6 +1,9 @@
+const express= require("express");
 const { Telegraf } = require('telegraf');
 const { Client } = require('pg'); 
 
+
+const app = express();
 const bot = new Telegraf('7765016070:AAECC96r9QBex-Zb6yjYJ8jS-U2eqKM29Vo'); // Replace with your actual bot token
 
 const client = new Client({
@@ -72,3 +75,5 @@ bot.launch();
 // Graceful shutdown uchun
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
+app.listen(3000, ()=>{console.log("Bot is running");
+})
