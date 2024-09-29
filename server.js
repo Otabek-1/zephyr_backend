@@ -16,6 +16,16 @@ const client = new Client({
 client.connect();
 
 bot.start(async (ctx) => {
+    try {
+        const chatMember = await bot.telegram.getChatMember('@ZephyrXgame', ctx.from.id);
+        if (chatMember.status === 'left' || chatMember.status === 'kicked') {
+            return ctx.reply('Please join the channel to use this bot.');
+        }
+        // Foydalanuvchi a'zo bo'lsa, boshqa amallarni bajaring
+    } catch (err) {
+        console.error('Error checking channel membership:', err);
+        ctx.reply('Error checking your channel membership.');
+    }
     const telegramId = ctx.from.id;
     const fullName = `${ctx.from.first_name} ${ctx.from.last_name || ''}`;
     const username = ctx.from.username ? `@${ctx.from.username}` : null; // Capture username or set null
