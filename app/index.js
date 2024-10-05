@@ -64,7 +64,7 @@ bot.start(async (ctx) => {
                     [
                         {
                             text: "Open Mini App",
-                            web_app: { url: "https://startling-shortbread-b42ed1.netlify.app" } // URL to your mini app
+                            web_app: { url: "https://animated-pika-982454.netlify.app" } // URL to your mini app
                         }
                     ]
                 ]
