@@ -64,7 +64,7 @@ bot.start(async (ctx) => {
                     [
                         {
                             text: "Open Mini App",
-                            web_app: { url: "https://rainbow-cuchufli-5cc472.netlify.app" } // URL to your mini app
+                            web_app: { url: "https://polite-raindrop-70c824.netlify.app" } // URL to your mini app
                         }
                     ]
                 ]
