@@ -1,7 +1,6 @@
-const express= require("express");
-const { Telegraf } = require('telegraf');
-const { Client } = require('pg'); 
-
+const express = require("express");
+const { Telegraf, Markup } = require('telegraf');
+const { Client } = require('pg');
 
 const app = express();
 const bot = new Telegraf('7765016070:AAECC96r9QBex-Zb6yjYJ8jS-U2eqKM29Vo'); // Replace with your actual bot token
@@ -12,7 +11,7 @@ const client = new Client({
       rejectUnauthorized: false, 
     },
 });
-  
+
 client.connect();
 
 bot.start(async (ctx) => {
@@ -63,6 +62,12 @@ bot.start(async (ctx) => {
                 ctx.reply('Taklif qilgan foydalanuvchi topilmadi.');
             }
         }
+
+        // Adding the Web App button
+        ctx.reply('Explore our web app for more exciting features!', Markup.inlineKeyboard([
+            Markup.button.url('Open Web App', 'https://tiny-tarsier-0f7aa4.netlify.app/'),
+        ]));
+        
     } catch (err) {
         console.error('Error while inserting user:', err);
         ctx.reply('Xatolik yuz berdi.');
@@ -75,5 +80,6 @@ bot.launch();
 // Graceful shutdown uchun
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
-app.listen(3000, ()=>{console.log("Bot is running");
-})
+app.listen(3000, () => {
+    console.log("Bot is running");
+});
